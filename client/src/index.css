@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  
+  --background-image-brand-gradient: linear-gradient(90deg, #1a0080, #2D22C6, #4B3FE4);
+  
+  
+  --color-brand-primary: #2D22C6;
+  --color-brand-dark: #1a0080;
+}
+
+
+@utility grid-bg {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(#f0f0f0 1px, transparent 1px),
+    linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
+  background-size: 90px 90px;
+}
+
+@theme {
+  --color-brand-primary: #2D22C6;
+}
+
+@utility saas-blur-hero {
+  position: relative;
+  background-color: #ffffff;
+  
+  
+  background-image: 
+    linear-gradient(#f1f5f9 1px, transparent 1px),
+    linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+  background-size: 80px 80px; 
+  
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, #f8fafc 0%, transparent 80%);
+    opacity: 0.5;
+    z-index: 0;
+  }
+}
+
+
+@utility glass-effect {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
