@@ -116,33 +116,33 @@ const filteredTasks = tasks
       <main className="max-w-6xl mx-auto px-6 py-12">
         <div className="relative pt-20 pb-16 px-6 overflow-hidden text-center">
   
-  <div className="absolute inset-0 z-0 pointer-events-none select-none">
-    <span className="absolute top-0 -left-10 text-[180px] font-blue text-gray-500/5 transform -rotate-12 blur-[1px] border-2px border-gray-200">
-      TASK
-    </span>
-    <span className="absolute -bottom-10 -right-10 text-[160px] font-black text-[#2D22C6]/5 transform rotate-6 blur-[1px]">
-      DONE
-    </span>
-    <span className="absolute bottom-1/15 left-1/70 text-[100px] transform -rotate-8 font-black text-purple-500/5 blur-[1px]">
-      ToDo
-    </span>
-  </div>
+          <div className="absolute inset-0 z-0 pointer-events-none select-none">
+            <span className="absolute top-0 -left-10 text-[180px] font-blue text-gray-500/5 transform -rotate-12 blur-[1px] border-2px border-gray-200">
+              TASK
+            </span>
+            <span className="absolute -bottom-10 -right-10 text-[160px] font-black text-[#2D22C6]/5 transform rotate-6 blur-[1px]">
+              DONE
+            </span>
+            <span className="absolute bottom-1/15 left-1/70 text-[100px] transform -rotate-8 font-black text-purple-500/5 blur-[1px]">
+              ToDo
+            </span>
+          </div>
 
-  
-  <div className="relative z-10 max-w-4xl mx-auto">
-    <h1 className="text-5xl md:text-7xl font-black text-[#1a1a1a] mb-6 tracking-tight leading-tight">
-      Welcome back, <br />
-      <span className="text-[#2D22C6] drop-shadow-sm">
-        {user?.firstName || 'Productive User'}
-      </span>
-    </h1>
+          
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-black text-[#1a1a1a] mb-6 tracking-tight leading-tight">
+              Welcome back, <br />
+              <span className="text-[#2D22C6] drop-shadow-sm">
+                {user?.firstName || 'Productive User'}
+              </span>
+            </h1>
 
-    <p className="text-gray-500 text-xl max-w-xl mx-auto font-medium">
-      You currently have <span className="text-[#1a1a1a] font-bold">{tasks.length} tasks</span> synchronized across your workspace. 
-      Ready to conquer the day?
-    </p>
-  </div>
-</div>
+            <p className="text-gray-500 text-xl max-w-xl mx-auto font-medium">
+              You currently have <span className="text-[#1a1a1a] font-bold">{tasks.length} tasks</span> synchronized across your workspace. 
+              Ready to conquer the day?
+            </p>
+          </div>
+        </div>
 
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
