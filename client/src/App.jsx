@@ -1,59 +1,35 @@
-import React from 'react';
-import {  Routes, Route, Navigate } from 'react-router-dom';
-import { 
-  SignedIn, 
-  SignedOut, 
-  RedirectToSignIn 
-} from '@clerk/clerk-react';
 
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
 import Dashboard from './pages/Dashboard';
-import { AuthPage } from './pages/AuthPage';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import GoogleCallback from './pages/GoogleCallback';
 
-
-const CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-if (!CLERK_PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key");
-}
+const PrivateRoute = ({ children }) => {
+  const { token } = useAuth();
+  return token ? children : <Navigate to="/login" replace />;
+};
 
 function App() {
   return (
-    
-      
-        <Routes>
-          
-          <Route 
-            path="/login" 
-            element={<AuthPage mode="signin" />} 
-          />
-          <Route 
-            path="/signup" 
-            element={<AuthPage mode="signup" />} 
-          />
+    <Routes>
+      <Route path="/auth/callback" element={<GoogleCallback />} />
+      <Route path="/login"                    element={<Login />} />
+      <Route path="/signup"                   element={<Signup />} />
+      <Route path="/forgot-password"          element={<ForgotPassword />} />
+      <Route path="/reset-password/:token"    element={<ResetPassword />} />
 
-          
-          <Route
-            path="/dashboard"
-            element={
-              <>
-                <SignedIn>
-                  <Dashboard />
-                </SignedIn>
-                <SignedOut>
-                  <RedirectToSignIn />
-                </SignedOut>
-              </>
-            }
-          />
+      <Route path="/dashboard" element={
+        <PrivateRoute>
+          <Dashboard />
+        </PrivateRoute>
+      }/>
 
-          
-          <Route 
-            path="/" 
-            element={<Navigate to="/dashboard" replace />} 
-          />
-        </Routes>
-      
-    
+      <Route path="*" element={<Navigate to="/login" replace />} />
+    </Routes>
   );
 }
 
