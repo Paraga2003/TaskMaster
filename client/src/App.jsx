@@ -7,6 +7,8 @@ import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import GoogleCallback from './pages/GoogleCallback';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAuth();
@@ -15,6 +17,7 @@ const PrivateRoute = ({ children }) => {
 
 function App() {
   return (
+    <>
     <Routes>
       <Route path="/auth/callback" element={<GoogleCallback />} />
       <Route path="/login"                    element={<Login />} />
@@ -30,6 +33,8 @@ function App() {
 
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
+    <ToastContainer position="top-right" autoClose={3000} />
+      </>
   );
 }
 
